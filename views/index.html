@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet"  type='text/css' href="/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
+    <title>Fluid Mechanics</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">🌊Fluid Mechanics</a>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">About</button>
+        </div>
+    </nav>
+
+    <div class="d-flex flex-column min-vh-100">
+      
+      
+      <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">About Page</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <p>Provides REST API and UI to calculate formulas</p>
+      
+                
+                </div>
+        
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div> 
+          </div> <!--modal-->
+
+          <!--Website Body-->
+
+          <!--CalcDynamicViscosity-->
+          <div class="shadow-sm p-3 mb-5 bg-body rounded border border-primary" id="calcDvel">
+            <h5>Dynamic Viscosity Calculator</h5>
+            <form id="dynamicViscosityForm">
+              <div class="row row-cols-lg-auto g-3 align-items-center">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Force(N)</span>
+                  <input type="text" class="form-control" id="force" placeholder="Force" aria-label="Force">
+                  <span class="input-group-text">N</span>
+                </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Area(A)</span>
+                <input type="text" class="form-control" id="area" placeholder="Area" aria-label="Area">
+                <span class="input-group-text">m<sup>3</sup></span>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Speed(V)</span>
+                <input type="text" class="form-control" id="speed" placeholder="Speed" aria-label="Speed">
+                <span class="input-group-text">m/s</span>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Distance(D)</span>
+                <input type="text" class="form-control" id="distance" placeholder="distance" aria-label="distance">
+                <span class="input-group-text">m</span>
+              </div>
+              
+              <button type="submit" id="calcButton" class="btn btn-primary">🧮Calculate</button>
+            </form>
+            </div>
+          </div> <!--CalcDynamicViscosity-->
+
+          <div class="shadow-sm p-3 mb-5 bg-body rounded border border-primary" id="reynoldSumDiv">
+            <form id="reynoldSumForm">
+              <h5>Reynold's Number Calculator</h5>
+              <div class="row">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Density (p)</span>
+                  <input type="text" class="form-control" id="dens" placeholder="Density" aria-label="Density">
+                  <span class="input-group-text">kg/m<sup>3</sup></span>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Velocity (V)</span>
+                  <input type="text" class="form-control" id="vel" placeholder="Velocity" aria-label="Velocity">
+                  <span class="input-group-text">m/s</span>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Length (L)</span>
+                  <input type="text" class="form-control" id="len" placeholder="Length" aria-label="Length">
+                  <span class="input-group-text">m</span>
+                </div>
+              </div>
+              <div id="visc_row" class="row">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Dynamic Viscosity (Nu)</span>
+                  <input type="text" class="form-control" id="visc" placeholder="Viscosity" aria-label="Viscosity">
+                  <span class="input-group-text">kg/(s*m)</span>
+                </div>
+              </div>
+              <button type="submit" id="calcButton" class="btn btn-primary">🧮Calculate</button>
+            </form>
+          </div>
+
+          <!--CalcCoef-->
+          <div class="shadow-sm p-3 mb-5 bg-body rounded border border-primary" id="calcCoefDiv">
+            <h5>Friction, Drag Coefficient and Boundary Layer Thickness(non-dementional) Calculator</h5>
+            <form id="calcCoefForm">
+              <div class="row row-cols-lg-auto g-3 align-items-center">
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Reynold's Number (Rex)</span>
+                  <input type="text" class="form-control" id="reynoldsNum" placeholder="Reynold's Number" aria-label="Reynold's Number">
+                </div>
+                
+              </div>
+              <button type="submit" id="calcButton" class="btn btn-primary">🧮Calculate</button>
+            </form>
+          </div> <!--CalcCoef-->
+
+
+
+            <!--Calc Drag Force-->
+            <div class="shadow-sm p-3 mb-5 bg-body rounded border border-primary" id="dragForceDiv">
+              <h5>Drag Force Due to Skin Friction Calculator</h5>
+              <form id="dragForceForm">
+                <div class="row row-cols-lg-auto g-3 align-items-center">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Drag Coefficient (Cd)</span>
+                    <input type="text" class="form-control" id="dragCoef" placeholder="Drag Coefficient" aria-label="Drag Coefficient">
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Density (p)</span>
+                    <input type="text" class="form-control" id="density" placeholder="Density" aria-label="Density">
+                    <span class="input-group-text">kg/m</span>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Velocity (V)</span>
+                    <input type="text" class="form-control" id="velocity" placeholder="Velocity" aria-label="Velocity">
+                    <span class="input-group-text">m/s</span>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Length (L)</span>
+                    <input type="text" class="form-control" id="length" placeholder="Length" aria-label="Length">
+                    <span class="input-group-text">m</span>
+                  </div>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">Width (b)</span>
+                    <input type="text" class="form-control" id="width" placeholder="Width" aria-label="Width">
+                    <span class="input-group-text">m</span>
+                  </div>
+                </div>
+                <button type="submit" id="calcButton" class="btn btn-primary">🧮Calculate</button>
+              </form>
+            </div> <!--Calc Drag Force-->
+          
+          
+
+
+  <script>
+
+    $(function(){
+      $('#reynoldSumForm').on('submit', function(e) {
+        e.preventDefault();
+        $("#dr").remove();
+        vel = $('#vel').val();
+        dens = $('#dens').val();
+        len = $('#len').val();
+        visc = $('#visc').val();
+
+        $.post('/calcReynoldsNum', {"density": dens, "velocity": vel, "length": len, "dviscosity": visc}, function(res){
+          $("#reynoldSumForm").after("<div id='dr'><p> <strong>Reynold's Number:</strong> " + res.reynoldsNum + '</br> <strong>Laminar:</strong> ' + res.isLaminar + '</p></div>')
+        })
+      })
+    })
+
+    $(function(){
+      $('#calcCoefForm').on('submit', function(e) {
+        e.preventDefault();
+        $("#dc").remove();
+        $("#cc").remove();
+        var reynoldsNum = $('#reynoldsNum').val();
+        var checkLaminar = $('#isLaminar').is(":checked");
+
+        $.post('/calcCoef', {"reynoldsNum": reynoldsNum, "isLaminar": checkLaminar}, function(res){
+          $("#calcCoefForm").after('<div id="cc"><p> <strong> Friction Coefficient: </strong>' + res.frictionCoef + ' </br><strong>Drag Coefficient:</strong> ' + res.dragCoef + '</p></div>');
+        })
+
+        $.post('/calcThickness', {"reynoldsNum": reynoldsNum, "isLaminar": checkLaminar}, function(res){
+          $("#calcCoefForm").after('<div id="dc"><p><strong>Boundary Layer Thickness: </strong>' + res.boundaryLayerThickness + '</br><strong> Laminar: </strong>' + res.isLaminar + '</p></div>');
+        })
+      })
+    })
+
+    $(function(){
+      $('#dragForceForm').on('submit', function(e) {
+        e.preventDefault();
+        $("#df").remove();
+        dragCoef = $('#dragCoef').val();
+        velocity = $('#velocity').val();
+        density = $('#density').val();
+        length = $('#length').val();
+        width = $('#width').val();
+
+        $.post('/calcDragForce', {"dragCoef": dragCoef, "velocity": velocity, "density": density, "length": length, "width": width}, function(res){
+          $("#dragForceForm").after('<div id="df"><p><strong>Drag force due to skin friction:</strong> ' + res.DragForceDueToSkinFriction + '</p></div>')
+        })
+      })
+    })
+
+    $(function(){
+      $('#dynamicViscosityForm').on('submit', function(e) {
+        e.preventDefault();
+        $("#dv").remove();
+
+        force = $('#force').val();
+        area = $('#area').val();
+        speed = $('#speed').val();
+        distance = $('#distance').val();
+
+        $.post('/calcDynamicViscosity', {"force": force, "area": area, "speed": speed, "distance": distance}, function(res){
+          $("#dynamicViscosityForm").after('<div id="dv"><p><strong>Dynamic Viscosity:</strong> ' + res.dynamicViscosity + '</p></div>')
+        })
+      })
+    })
+  </script>
+          
+    </div>
+  </body>
+</html>
