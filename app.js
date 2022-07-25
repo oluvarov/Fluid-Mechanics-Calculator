@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 const app = express();
 
-const PORT = 3000;
+const port = process.env.PORT || 80
 
 var indexRouter = require('./routes/index');
 app.use('/', indexRouter);
