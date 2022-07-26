@@ -3,7 +3,7 @@ const path = require('path');
 const router = express.Router();
 const app = express();
 
-const port = process.env.PORT || 80
+const port = process.env.PORT || 80;
 
 var indexRouter = require('./routes/index');
 app.use('/', indexRouter);
@@ -97,9 +97,9 @@ app.post('/calcDynamicViscosity', (req,res) => {
 
 
 
-app.listen(PORT, function(err){
+app.listen(port, function(err){
     if (err) console.log("Error in server setup")
-    console.log("Server listening on Port", PORT);
+    console.log("Server listening on Port", port);
 })
 
 app.set('views', __dirname + '/views');
