@@ -17,7 +17,7 @@ If you want to run this project locally on your machine, you need to have Node.J
 
 Then follow these steps:
 
-***Clone this repository:*** git clone https://github.com/<your-username>/fluid-mechanics-calculator.git
+***Clone this repository:*** git clone https://github.com/ondip/fluid-mechanics-calculator.git
 
 ***Go to the project directory:*** cd fluid-mechanics-calculator
 
@@ -25,4 +25,4 @@ Then follow these steps:
 
 ***Start the server:*** npm start
 
-Open your browser and go to http://localhost:3000/ for the web interface or http://localhost:3000/api/ for the REST API.
+Open your browser and go to http://localhost:3000/ for the web interface.
